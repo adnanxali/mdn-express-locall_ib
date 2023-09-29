@@ -2,6 +2,8 @@ var createError = require('http-errors');
 var express = require('express');
 const compression= require('compression');
 const helmet= require('helmet');
+var app = express();
+
 
 const mongoose=require('mongoose');
 mongoose.set("strictQuery",false);
@@ -18,11 +20,11 @@ async function main() {
 
 app.use(
   helmet.contentSecurityPolicy({
-    directives:{
-      "script-src": ["'self'", "code.jquery.com", "cdn.jsdelivr.net"]
-    }
-  })
-)
+    directives: {
+      "script-src": ["'self'", "code.jquery.com", "cdn.jsdelivr.net"],
+    },
+  }),
+);
 
 
 app.use(compression());// Compressing all routes
